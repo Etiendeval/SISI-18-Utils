@@ -1,41 +1,48 @@
 // ==UserScript==
-// @name			SISI-18-Utils (Alpha)
-// @version			1.0
+
+// @name			    SISI-18-Utils (Alpha)
+// @namespace     https://github.com/Etiendeval/SISI-18-Utils
+// @version			  1.1
+// @author        Etiendeval
 // @description 	Script for play GoodGameEmpire in fullscreen for spilgames.com (Alpha)
-// @match			http://www.jeu.fr/goodgames/sns/init/*
-// @match			http://www.jeu.fr/jeu/Goodgame-Empire.html
-// @match			http://www.jeux.fr/goodgames/sns/init/*
-// @match			http://www.jeux.fr/jeu/Goodgame-Empire.html
-// @match			http://www.gioco.it/goodgames/sns/init/*
-// @match			http://www.gioco.it/gioco/goodgame-empire.html
-// @match			http://www.spelletjes.nl/goodgames/sns/init/*
-// @match			http://www.spelletjes.nl/spel/goodgame-empire.html
-// @match			http://www.giochi.it/goodgames/sns/init/*
-// @match			http://www.giochi.it/gioco/goodgame-empire.html
-// @match			http://www.jetztspielen.de/goodgames/sns/init/*
-// @match			http://www.jetztspielen.de/spiel/goodgame-empire.html
-// @match			http://www.gry.pl/goodgames/sns/init/*
-// @match			http://www.gry.pl/gra/goodgame-empire.html
-// @match			http://www.spel.nl/goodgames/sns/init/*
-// @match			http://www.spel.nl/spel/goodgame-empire.html
-// @match			http://www.spielen.com/goodgames/sns/init/*
-// @match			http://www.spielen.com/spiel/goodgame-empire.html
-// @match			http://www.spela.se/goodgames/sns/init/*
-// @match			http://www.spela.se/spel_/goodgame-empire.html
-// @match			http://www.spelletjes.nl/goodgames/sns/init/*
-// @match			http://www.spelletjes.nl/spel/goodgame-empire.html
+// @updateURL     https://github.com/Etiendeval/SISI-18-Utils.git
+// @downloadURL   https://github.com/Etiendeval/SISI-18-Utils.git
+// @supportURL    https://github.com/Etiendeval/SISI-18-Utils/issues
+// @require       http://code.jquery.com/jquery-latest.js
+// @grant         none
 
-// @match			http://www.mousebreaker.com/goodgames/sns/init/*
-// @match			http://www.mousebreaker.com/game/goodgame-empire?
-// @match			http://www.juegos.com/goodgames/sns/init/*
-// @match			http://www.juegos.com/juego/goodgame-empire?
-// @match			http://www.agame.com/goodgames/sns/init/*
-// @match			http://www.agame.com/game/goodgame-empire.html
-// @match			http://www.games.co.uk/goodgames/sns/init/*
-// @match			http://www.games.co.uk/game/goodgame-empire.html
+// @match			    http://www.jeu.fr/goodgames/sns/init/*
+// @match			    http://www.jeu.fr/jeu/Goodgame-Empire.html
+// @match			    http://www.jeux.fr/goodgames/sns/init/*
+// @match			    http://www.jeux.fr/jeu/Goodgame-Empire.html
+// @match			    http://www.gioco.it/goodgames/sns/init/*
+// @match			    http://www.gioco.it/gioco/goodgame-empire.html
+// @match			    http://www.spelletjes.nl/goodgames/sns/init/*
+// @match			    http://www.spelletjes.nl/spel/goodgame-empire.html
+// @match			    http://www.giochi.it/goodgames/sns/init/*
+// @match			    http://www.giochi.it/gioco/goodgame-empire.html
+// @match			    http://www.jetztspielen.de/goodgames/sns/init/*
+// @match			    http://www.jetztspielen.de/spiel/goodgame-empire.html
+// @match			    http://www.gry.pl/goodgames/sns/init/*
+// @match			    http://www.gry.pl/gra/goodgame-empire.html
+// @match			    http://www.spel.nl/goodgames/sns/init/*
+// @match			    http://www.spel.nl/spel/goodgame-empire.html
+// @match			    http://www.spielen.com/goodgames/sns/init/*
+// @match			    http://www.spielen.com/spiel/goodgame-empire.html
+// @match			    http://www.spela.se/goodgames/sns/init/*
+// @match			    http://www.spela.se/spel_/goodgame-empire.html
+// @match			    http://www.spelletjes.nl/goodgames/sns/init/*
+// @match			    http://www.spelletjes.nl/spel/goodgame-empire.html
 
-// @require http://code.jquery.com/jquery-latest.js
-// @copyright  2018+, Etiendeval
+// @match			    http://www.mousebreaker.com/goodgames/sns/init/*
+// @match			    http://www.mousebreaker.com/game/goodgame-empire?
+// @match			    http://www.juegos.com/goodgames/sns/init/*
+// @match			    http://www.juegos.com/juego/goodgame-empire?
+// @match			    http://www.agame.com/goodgames/sns/init/*
+// @match			    http://www.agame.com/game/goodgame-empire.html
+// @match			    http://www.games.co.uk/goodgames/sns/init/*
+// @match			    http://www.games.co.uk/game/goodgame-empire.html
+
 // ==/UserScript==
 
 $(document).ready(function() {
