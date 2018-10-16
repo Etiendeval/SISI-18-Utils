@@ -2,7 +2,7 @@
 
 // @name			    SISI-18-Utils (Alpha)
 // @namespace     https://github.com/Etiendeval/SISI-18-Utils
-// @version			  1.1
+// @version			  1.2
 // @author        Etiendeval
 // @description 	Script for play GoodGameEmpire in fullscreen for spilgames.com (Alpha)
 // @updateURL     https://github.com/Etiendeval/SISI-18-Utils.git
@@ -54,32 +54,19 @@ if (loc.indexOf('http://gi.goodgamestudios.com/sns')!=-1 || loc.indexOf('jeux.fr
    var tttt=setInterval(function(e) {
 
    ifr=document.getElementById("content-iframe");
-       if(ifr!=null)
-   button = ifr.contentDocument.getElementById('icon');
-	   if(button==null)  return;
-       button.innerHTML='<input type="button" value="Full Window + Tools"/>';
-    button.addEventListener('click',function() {
+       if(ifr!=null) {
         var str=ifr.contentDocument.getElementById('flashcontent');
         var reg= new RegExp('MOMOMOMO',"g");
-        var regZ= new RegExp('MOMOMOMO2',"g");
         var reg1= new RegExp('="800"',"g");
         var reg2= new RegExp('="600"',"g");
-
-		var reg4= new RegExp('NOMJOUEUR',"g");
         var reg3= new RegExp('pln=([^&]*)&',"g");
-        var reg33= new RegExp('pln=([^>]*)>',"g");
+        var reg4= new RegExp('NOMJOUEUR',"g");
         var nomjoueur=reg3.exec(str.innerHTML);
-        var mmmm=reg33.exec(str.innerHTML);
 
-        //myWindow = window.open('','_blank');
-        //myWindow .document.write(chaine.replace(reg4,nomjoueur[1]).replace(reg,str.parentNode.innerHTML.replace(reg1,'="100%"').replace(reg2,'="100%"')));
-
-//		var win = window.parent.open("","_self");
-//		win.close();
 		mwin=open('','_self');
-		mwin.parent.document.write(chaine.replace(reg4,nomjoueur[1]).replace(regZ,encodeURIComponent(mmmm[0])).replace(reg,str.parentNode.innerHTML.replace(reg1,'="100%"').replace(reg2,'="100%"')));
+		mwin.parent.document.write(chaine.replace(reg4,nomjoueur[1]).replace(reg, str.parentNode.innerHTML.replace(reg1, '="100%"').replace(reg2, '="100%"')));
 
-    },true);
+    }
        clearInterval(tttt) ;
 
     }, 3000);
