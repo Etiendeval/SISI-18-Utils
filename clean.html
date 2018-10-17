@@ -1,0 +1,76 @@
+<html style="height:100%;">
+
+<head>
+  <title>NOMJOUEUR ( SISI 18 Utils )</title>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+</head>
+
+<body style="margin:0px;padding:0px;">
+  <script type="text/javascript">
+
+    function Rel() {
+      document.getElementById('flashcontent').parentNode.innerHTML=document.getElementById('flashcontent').parentNode.innerHTML;
+    }
+
+    var memo;
+    memo='';
+
+    function freeze() {
+      $("#refresh").hide();
+      $("#freeze").toggle();
+      $("#restart").toggle();
+      memo=document.getElementById('flashcontent').parentNode.innerHTML;
+      document.getElementById('gge').innerHTML="Clique D\u00e9 Freeze pour relancer";
+    }
+
+    function restart() {
+      $("#refresh").show();
+      $("#freeze").toggle();
+      $("#restart").toggle();
+      document.getElementById('gge').innerHTML=memo;
+      $('#gge').css("width",'70%');
+      $('#flashcontent').css("height",'100%');
+    }
+
+    function ShowTools(e) {
+      if($('#tools').is(':visible')) {
+        HideTools();
+        return;
+        }
+        $('#tools').show();
+        $('#gge').css("width",'70%');
+        $('#flashcontent').css("height",'100%');
+        e.stopPropagation();
+      }
+
+    function HideTools() {
+      $('#tools').hide();
+      $('#gge').css("width",'100%');
+    }
+
+    function ch_taille(dime) {
+      $('#gge').css("width",dime+'%');
+      dime2=dime-2;
+      $('#flashcontent').css("height",dime2+'%');
+    }
+  </script>
+
+  <div style='position:absolute;top:10px;left:10px;'>
+    <img onclick='var e = arguments[0] || window.event; ShowTools(e);' src='http://sidesdarkness.lorksoft.com/images/icon-toolbox.jpg'  width='33%;'/>
+  </div>
+  <div id='tools' style='Display:none;float:left;width:29%;border 0px solid;'>
+    <br>
+      <input type='button' id='refresh' value='Refresh' onclick='Rel()' >
+      <input type='button' value='Arret temporaire' id='freeze' onclick='freeze()' >
+      <input type='button' value='d\u00e9 freeze' id='restart' onclick='restart()' style='display:none'>
+      <input type='button' onclick="document.location.href='http://www.gioco.it/gioco/Goodgame-Empire?auto=1';" value='gioco.it' />
+      <input type='button' onclick="document.location.href='http://www.jeux.fr/jeu/Goodgame-Empire?auto=1';" value='Jeux.fr' />
+      <input type='button' onclick="document.location.href='http://www.jeu.fr/jeu/Goodgame-Empire?auto=1';" value='Jeu.fr' />
+    <br>
+      Taille d'affichage :
+    <input type='button' value='1/4' onclick='ch_taille(25);'>
+    <input type='button' value='1/2' onclick='ch_taille(50);'>
+    <input type='button' value='3/4' onclick='ch_taille(70);'><br><br></div>
+    <div id='gge' style='float:left;width:100%;border:0px solid;'></div>
+  </body>
+</html>
