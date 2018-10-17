@@ -2,7 +2,7 @@
 
 // @name			    SISI-18-Utils (Alpha)
 // @namespace     https://github.com/Etiendeval/SISI-18-Utils
-// @version			  1.4
+// @version			  1.6
 // @author        Etiendeval
 // @description 	Script for play GoodGameEmpire in fullscreen for spilgames.com (Alpha)
 // @updateURL     https://github.com/Etiendeval/SISI-18-Utils/raw/master/SISI-18-Utils.user.js
@@ -52,7 +52,146 @@ var auto_run = GM_getValue('auto-run');
 if(auto_run == undefined){GM_setValue('auto-run','false');
 }
 
-var chaine= "<html style=\"height:100%;\"><head>\r\n<title>NOMJOUEUR ( SISI 18 Utils )<\/title>\r\n<script src=\"http:\/\/ajax.googleapis.com\/ajax\/libs\/jquery\/1.8.2\/jquery.min.js\"><\/script>\r\n<\/head><body style=\"margin:0px;padding:0px;\">\r\n<script type='text\/javascript'>\r\nfunction Rel() {\r\n\t\tdocument.getElementById('flashcontent').parentNode.innerHTML=document.getElementById('flashcontent').parentNode.innerHTML;\r\n}\r\n\r\nvar memo;\r\nmemo='';\r\nfunction freeze() {\r\n\t$(\"#refresh\").hide();\r\n\t$(\"#freeze\").toggle();\r\n\t$(\"#restart\").toggle();\r\n\tmemo=document.getElementById('flashcontent').parentNode.innerHTML;\r\n\tdocument.getElementById('gge').innerHTML=\"Clique D\u00e9 Freeze pour relancer\";\r\n}\r\n\r\nfunction restart() {\r\n\t$(\"#refresh\").show();\r\n\t$(\"#freeze\").toggle();\r\n\t$(\"#restart\").toggle();\r\n\tdocument.getElementById('gge').innerHTML=memo;\r\n\t$('#gge').css(\"width\",'70%');\r\n\t$('#flashcontent').css(\"height\",'100%');\r\n\t\r\n\t\r\n}\r\n\r\nfunction From() {\r\nvar arr=$('#to2').val();\r\nvar dure=$('#dure2').val();\r\nvar aarr=arr.split(':');\r\nvar ddure=dure.split(':');\r\nvar min=aarr[1]-ddure[1];\r\nvar hour=aarr[0]-ddure[0];\r\nif(min<0) {\r\nmin+=60;\r\nhour-=1;\r\n}\r\nif(min<10) min='0'+min;\r\nif(hour<0) hour+=24;\r\n$('#from2').val(hour+':'+min);\r\n}\r\n\r\nfunction ShowTools(e) {\r\n\tif($('#tools').is(':visible')) {\r\n\t\tHideTools();\r\n\t\treturn;\r\n\t} \r\n\t$('#tools').show();\r\n\t$('#gge').css(\"width\",'70%');\r\n\t$('#flashcontent').css(\"height\",'100%');\r\n\te.stopPropagation();\r\n}\r\n\r\nfunction HideTools() {\r\n$('#tools').hide();\r\n$('#gge').css(\"width\",'100%');\r\n}\r\n\r\nfunction CalcDef() {\r\nvar D1=parseInt($('#D_1').val());\r\nvar D2=parseInt($('#D_2').val());\r\nvar D3=parseInt($('#D_3').val());\r\nvar M1=parseInt($('#L_1').val());\r\nvar M2=parseInt($('#L_2').val());\r\nvar M3=parseInt($('#L_3').val());\r\nvar T=D1+D2+D3+M1+M2+M3;\r\nvar T1=D1+M1;\r\nvar T2=D2+M2;\r\nvar T3=D3+M3;\r\n$('#fg')         .html( Math.round(100*T1\/T)+'%');\r\n$('#fc')         .html( Math.round(100*T2\/T)+'%');\r\n$('#fd')         .html( Math.round(100*T3\/T)+'%');\r\n$('#mfg')      .html( Math.round(100*D1\/T1)+'%');\r\n$('#mfc')      .html( Math.round(100*D2\/T2)+'%');\r\n$('#mfd')      .html( Math.round(100*D3\/T3)+'%');\r\n$('#mfg')      .html( Math.round(100*M1\/T1)+'%');\r\n$('#mfc')      .html( Math.round(100*M2\/T2)+'%');\r\n$('#mfd')      .html( Math.round(100*M3\/T3)+'%');\r\n$('#dfg')       .html( Math.round(100*D1\/T1)+'%');\r\n$('#dfc')       .html( Math.round(100*D2\/T2)+'%');\r\n$('#dfd')       .html( Math.round(100*D3\/T3)+'%');\r\n\r\n}\r\n\r\nfunction ch_taille(dime) {\r\n\t$('#gge').css(\"width\",dime+'%');\r\n\tdime2=dime-2;\r\n\t$('#flashcontent').css(\"height\",dime2+'%');\r\n}\r\n\r\n<\/script>\r\n<div style='position:absolute;top:10px';left:10px;'>\r\n<img onclick='var e = arguments[0] || window.event; ShowTools(e);' src='http:\/\/sidesdarkness.lorksoft.com\/images\/icon-toolbox.jpg'  width='33%;'\/>\r\n<\/div>\r\n<div id='tools' style='Display:none;float:left;width:29%;border 0px solid;'><br\/>\r\n<input type='button' id='refresh' value='Refresh' onclick='Rel()' >\r\n<input type='button' value='Arret temporaire' id='freeze' onclick='freeze()' >\r\n<input type='button' value='d\u00e9 freeze' id='restart' onclick='restart()' style='display:none'>\r\n<input type='button' onclick=\"document.location.href='http:\/\/www.gioco.it\/gioco\/Goodgame-Empire?auto=1';\" value='gioco.it' \/>\r\n<input type='button' onclick=\"document.location.href='http:\/\/www.jeux.fr\/jeu\/Goodgame-Empire?auto=1';\" value='Jeux.fr' \/>\r\n<input type='button' onclick=\"document.location.href='http:\/\/www.jeu.fr\/jeu\/Goodgame-Empire?auto=1';\" value='Jeu.fr' \/>\r\n<br\/>\r\nTaille d'affichage : \r\n<input type='button' value='1\/4' onclick='ch_taille(25);'>\r\n<input type='button' value='1\/2' onclick='ch_taille(50);'>\r\n<input type='button' value='3\/4' onclick='ch_taille(70);'><br\/><br/><\/div>\r\n<div id='gge' style='float:left;width:100%;border:0px solid;'>\r\nMOMOMOMO\r\n<\/div>\r\n<\/body>\r\n<\/html>";
+var chaine= '<html style="height:100%;">'+
+''+
+'<head>'+
+'  <title>NOMJOUEUR ( SISI 18 Utils )</title>'+
+'  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>'+
+'  <meta name="viewport" content="width=device-width, initial-scale=1">'+
+'  <style>'+
+'  .switch {'+
+'    position: relative;'+
+'    top: -9px;'+
+'    display: inline-block;'+
+'    width: 30px;'+
+'    height: 17px;'+
+'  }'+
+'  .switch input {'+
+'    opacity: 0;'+
+'    width: 0;'+
+'    height: 0;'+
+'  }'+
+'  .slider {'+
+'    position: absolute;'+
+'    cursor: pointer;'+
+'    top: 0;'+
+'    left: 0;'+
+'    right: 0;'+
+'    bottom: 0;'+
+'    background-color: #ccc;'+
+'    -webkit-transition: .3s;'+
+'    transition: .3s;'+
+'  }'+
+'  .slider:before {'+
+'    position: absolute;'+
+'    content: "";'+
+'    height: 13px;'+
+'    width: 13px;'+
+'    left: 2px;'+
+'    bottom: 2px;'+
+'    background-color: white;'+
+'    -webkit-transition: .3s;'+
+'    transition: .3s;'+
+'  }'+
+'  input:checked + .slider {'+
+'    background-color: #2196F3;'+
+'  }'+
+'  input:focus + .slider {'+
+'    box-shadow: 0 0 1px #2196F3;'+
+'  }'+
+'  input:checked + .slider:before {'+
+'    -webkit-transform: translateX(13px);'+
+'    -ms-transform: translateX(13px);'+
+'    transform: translateX(13px);'+
+'  }'+
+'/* Rounded sliders */'+
+'  .slider.round {'+
+'    border-radius: 13px;'+
+'  }'+
+'  .slider.round:before {'+
+'    border-radius: 50%;'+
+'  }'+
+'  </style>'+
+'</head>'+
+''+
+'<body style="margin:0px;padding:0px;">'+
+'  <script type="text/javascript">'+
+''+
+'    function Rel() {'+
+'      document.getElementById(\'flashcontent\').parentNode.innerHTML=document.getElementById(\'flashcontent\').parentNode.innerHTML;'+
+'    }'+
+''+
+'    var memo;'+
+'    memo=\'\';'+
+''+
+'    function freeze() {'+
+'      $("#refresh").hide();'+
+'      $("#freeze").toggle();'+
+'      $("#restart").toggle();'+
+'      memo=document.getElementById(\'flashcontent\').parentNode.innerHTML;'+
+'      document.getElementById(\'gge\').innerHTML="Clique D\u00e9 Freeze pour relancer";'+
+'    }'+
+''+
+'    function restart() {'+
+'      $("#refresh").show();'+
+'      $("#freeze").toggle();'+
+'      $("#restart").toggle();'+
+'      document.getElementById(\'gge\').innerHTML=memo;'+
+'      $(\'#gge\').css("width",\'70%\');'+
+'      $(\'#flashcontent\').css("height",\'100%\');'+
+'    }'+
+''+
+'    function ShowTools(e) {'+
+'      if($(\'#tools\').is(\':visible\')) {'+
+'        HideTools();'+
+'        return;'+
+'        }'+
+'        $(\'#tools\').show();'+
+'        $(\'#gge\').css("width",\'70%\');'+
+'        $(\'#flashcontent\').css("height",\'100%\');'+
+'        e.stopPropagation();'+
+'      }'+
+''+
+'    function HideTools() {'+
+'      $(\'#tools\').hide();'+
+'      $(\'#gge\').css("width",\'100%\');'+
+'    }'+
+''+
+'    function ch_taille(dime) {'+
+'      $(\'#gge\').css("width",dime+\'%\');'+
+'      dime2=dime-2;'+
+'      $(\'#flashcontent\').css("height",dime2+\'%\');'+
+'    }'+
+'  </script>'+
+''+
+'  <div style=\'position:absolute;top:10px;left:10px;\'>'+
+'    <img onclick=\'var e = arguments[0] || window.event; ShowTools(e);\' src=\'http://sidesdarkness.lorksoft.com/images/icon-toolbox.jpg\'  width=\'33%;\'/>'+
+'  </div>'+
+'  <div id=\'tools\' style=\'Display:none;float:left;width:29%;border 0px solid;\'>'+
+'    <br>'+
+'      <input type=\'button\' id=\'refresh\' value=\'Refresh\' onclick=\'Rel()\' >'+
+'      <input type=\'button\' value=\'Arret temporaire\' id=\'freeze\' onclick=\'freeze()\' >'+
+'      <input type=\'button\' value=\'d\u00e9 freeze\' id=\'restart\' onclick=\'restart()\' style=\'display:none\'>'+
+'      <input type=\'button\' onclick="document.location.href=\'http://www.jeux.fr/jeu/Goodgame-Empire?auto=1\';" value=\'Jeux.fr\' />'+
+'      <input type=\'button\' onclick="document.location.href=\'http://www.jeu.fr/jeu/Goodgame-Empire?auto=1\';" value=\'Jeu.fr\' />'+
+'      <input type=\'button\' onclick="document.location.href=\'http://www.gioco.it/gioco/Goodgame-Empire?auto=1\';" value=\'gioco.it\' />'+
+''+
+'    <br>'+
+'    Taille d\'affichage :'+
+'    <input type=\'button\' value=\'1/4\' onclick=\'ch_taille(25);\'>'+
+'    <input type=\'button\' value=\'1/2\' onclick=\'ch_taille(50);\'>'+
+'    <input type=\'button\' value=\'3/4\' onclick=\'ch_taille(70);\'><br>'+
+'    Mise en pleine écrant automatiquement (alpha):'+
+'    <label class="switch">'+
+'      <input type="checkbox">'+
+'      <span class="slider round"></span>'+
+'    </label>'+
+'  </div>'+
+'  <div id=\'gge\' style=\'float:left;width:100%;border:0px solid;\'>'+
+'  MOMOMOMO'+
+'  </div>'+
+'  </body>'+
+'</html>';
   var loc = window.location.href;
 
 if (loc.indexOf('http://gi.goodgamestudios.com/sns')!=-1 || loc.indexOf('jeux.fr/goodgames/sns/init/') != -1 || loc.indexOf('goodgames/sns/init/') != -1 ) {
