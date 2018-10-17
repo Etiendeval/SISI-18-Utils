@@ -2,11 +2,11 @@
 
 // @name			    SISI-18-Utils (Alpha)
 // @namespace     https://github.com/Etiendeval/SISI-18-Utils
-// @version			  1.3
+// @version			  1.4
 // @author        Etiendeval
 // @description 	Script for play GoodGameEmpire in fullscreen for spilgames.com (Alpha)
-// @updateURL     https://github.com/Etiendeval/SISI-18-Utils.git
-// @downloadURL   https://github.com/Etiendeval/SISI-18-Utils.git
+// @updateURL     https://github.com/Etiendeval/SISI-18-Utils/raw/master/SISI-18-Utils.user.js
+// @downloadURL   https://github.com/Etiendeval/SISI-18-Utils/raw/master/SISI-18-Utils.user.js
 // @supportURL    https://github.com/Etiendeval/SISI-18-Utils/issues
 // @require       http://code.jquery.com/jquery-latest.js
 // @grant         GM_setValue
