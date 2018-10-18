@@ -2,7 +2,7 @@
 
 // @name			    SISI-18-Utils (Alpha)
 // @namespace     https://github.com/Etiendeval/SISI-18-Utils
-// @version			  1.6
+// @version			  1.7
 // @author        Etiendeval
 // @description 	Script for play GoodGameEmpire in fullscreen for spilgames.com (Alpha)
 // @updateURL     https://github.com/Etiendeval/SISI-18-Utils/raw/master/SISI-18-Utils.user.js
@@ -11,6 +11,7 @@
 // @require       http://code.jquery.com/jquery-latest.js
 // @grant         GM_setValue
 // @grant         GM_getValue
+// @grant         GM_log
 
 // @match			    http://www.jeu.fr/goodgames/sns/init/*
 // @match			    http://www.jeu.fr/jeu/Goodgame-Empire.html
@@ -45,14 +46,15 @@
 // @match			    http://www.games.co.uk/game/goodgame-empire.html
 
 // ==/UserScript==
+var auto_run = GM_getValue('auto-run');
+if(auto_run == undefined){GM_setValue('auto-run','false');
+  auto_run = GM_getValue('auto-run');
+}
+GM_log('auto_run_info '+auto_run);
 
 $(document).ready(function() {
 
-var auto_run = GM_getValue('auto-run');
-if(auto_run == undefined){GM_setValue('auto-run','false');
-}
-
-var chaine= '<html style="height:100%;">'+
+var chaine='<html style="height:100%;">'+
 ''+
 '<head>'+
 '  <title>NOMJOUEUR ( SISI 18 Utils )</title>'+
@@ -120,7 +122,8 @@ var chaine= '<html style="height:100%;">'+
 '    function Rel() {'+
 '      document.getElementById(\'flashcontent\').parentNode.innerHTML=document.getElementById(\'flashcontent\').parentNode.innerHTML;'+
 '    }'+
-''+
+'    var auto_run_info;'+
+'    auto_run_info='+ auto_run +';'+
 '    var memo;'+
 '    memo=\'\';'+
 ''+
@@ -146,6 +149,7 @@ var chaine= '<html style="height:100%;">'+
 '        HideTools();'+
 '        return;'+
 '        }'+
+'        MAJ_checkbox();'+
 '        $(\'#tools\').show();'+
 '        $(\'#gge\').css("width",\'70%\');'+
 '        $(\'#flashcontent\').css("height",\'100%\');'+
@@ -161,6 +165,20 @@ var chaine= '<html style="height:100%;">'+
 '      $(\'#gge\').css("width",dime+\'%\');'+
 '      dime2=dime-2;'+
 '      $(\'#flashcontent\').css("height",dime2+\'%\');'+
+'    }'+
+'    function check(){'+
+'      $("#auto_run").prop("checked", true);'+
+'    }'+
+'    function uncheck(){'+
+'      $("#auto_run").prop("checked", false);'+
+'    }'+
+'    function MAJ_checkbox(){'+
+'      if(auto_run_info===true){'+
+'        check();'+
+'      }'+
+'      if(auto_run_info===false){'+
+'        uncheck();'+
+'      }'+
 '    }'+
 '  </script>'+
 ''+
@@ -182,9 +200,9 @@ var chaine= '<html style="height:100%;">'+
 '    <input type=\'button\' value=\'1/2\' onclick=\'ch_taille(50);\'>'+
 '    <input type=\'button\' value=\'3/4\' onclick=\'ch_taille(70);\'><br>'+
 '    Mise en pleine écrant automatiquement (alpha):'+
-'    <label class="switch">'+
-'      <input type="checkbox">'+
-'      <span class="slider round"></span>'+
+'    <label class=\'switch\'>'+
+'      <input type=\'checkbox\'id=\'auto_run\'>'+
+'      <span class=\'slider round\'></span>'+
 '    </label>'+
 '  </div>'+
 '  <div id=\'gge\' style=\'float:left;width:100%;border:0px solid;\'>'+
@@ -192,7 +210,8 @@ var chaine= '<html style="height:100%;">'+
 '  </div>'+
 '  </body>'+
 '</html>';
-  var loc = window.location.href;
+
+var loc = window.location.href;
 
 if (loc.indexOf('http://gi.goodgamestudios.com/sns')!=-1 || loc.indexOf('jeux.fr/goodgames/sns/init/') != -1 || loc.indexOf('goodgames/sns/init/') != -1 ) {
     var count=0;
@@ -214,34 +233,29 @@ if (loc.indexOf('http://gi.goodgamestudios.com/sns')!=-1 || loc.indexOf('jeux.fr
 
 		mwin=open('','_self');
 		mwin.parent.document.write(chaine.replace(reg4,nomjoueur[1]).replace(reg, str.parentNode.innerHTML.replace(reg1,'="100%"').replace(reg2,'="100%"')));
-
     },true);
        clearInterval(tttt) ;
 
     }, 3000);
-
-
 }
-   var tttt2=setInterval(function(e) {
-		pub=document.getElementById("sgAdWrapperObj");
-		if(pub!=null) {pub.parentNode.removeChild(pub);
-		clearInterval(tttt2);
-		}
-		pub=document.getElementById("sgAdLbGp728x90");
-		if(pub!=null) {pub.parentNode.removeChild(pub);
-		}
-		pub=document.getElementById("sgAdLbSg728x90");
-		if(pub!=null) {pub.parentNode.removeChild(pub);
-		}
-		pub=document.getElementById("cboxOverlay");
-		if(pub!=null) {pub.parentNode.removeChild(pub);
-		clearInterval(tttt2);
-		}
-		pub=document.getElementById("colorbox");
-		if(pub!=null) {pub.parentNode.removeChild(pub);
-		clearInterval(tttt2);
-		}
-
-	},1500);
-
+var tttt2=setInterval(function(e) {
+  pub=document.getElementById("sgAdWrapperObj");
+  if(pub!=null) {pub.parentNode.removeChild(pub);
+	   clearInterval(tttt2);
+  }
+pub=document.getElementById("sgAdLbGp728x90");
+  if(pub!=null) {pub.parentNode.removeChild(pub);
+  }
+pub=document.getElementById("sgAdLbSg728x90");
+	if(pub!=null) {pub.parentNode.removeChild(pub);
+  }
+pub=document.getElementById("cboxOverlay");
+	if(pub!=null) {pub.parentNode.removeChild(pub);
+	clearInterval(tttt2);
+	}
+pub=document.getElementById("colorbox");
+	if(pub!=null) {pub.parentNode.removeChild(pub);
+	clearInterval(tttt2);
+  }
+},1500);
 });
