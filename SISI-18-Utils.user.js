@@ -5,8 +5,6 @@
 // @version			  1.8.1
 // @author        Etiendeval
 // @description 	Script for play GoodGameEmpire in fullscreen for spilgames.com (Alpha)
-// @updateURL     https://github.com/Etiendeval/SISI-18-Utils/raw/master/SISI-18-Utils.user.js
-// @downloadURL   https://github.com/Etiendeval/SISI-18-Utils/raw/master/SISI-18-Utils.user.js
 // @supportURL    https://github.com/Etiendeval/SISI-18-Utils/issues
 // @require       http://code.jquery.com/jquery-latest.js
 // @grant         GM_setValue
@@ -177,7 +175,6 @@ var HTML='<html style="height:100%;">'+
 
 console.log('[UserScript] Postboot');
 var loc = window.location.href;
-var GUI_auto_run;
 
 if (loc.indexOf('http://gi.goodgamestudios.com/sns')!=-1 || loc.indexOf('jeux.fr/goodgames/sns/init/') != -1 || loc.indexOf('goodgames/sns/init/') != -1 ) {
     var count=0;
